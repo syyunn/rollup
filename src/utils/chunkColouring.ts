@@ -46,14 +46,16 @@ export function assignChunkColouringHashes(
 	}
 
 	for (const entry of dynamicImportersByModule.keys()) {
-		const entryHash = randomUint8Array(10);
-		addColourToModuleDependencies(
-			entry,
-			entryHash,
-			dynamicDependentEntryPointsByDynamicEntry.get(entry)!,
-			dependentEntryPointsByModule,
-			dynamicDependentEntryPointsByDynamicEntry
-		);
+		if (!entry.manualChunkAlias) {
+			const entryHash = randomUint8Array(10);
+			addColourToModuleDependencies(
+				entry,
+				entryHash,
+				dynamicDependentEntryPointsByDynamicEntry.get(entry)!,
+				dependentEntryPointsByModule,
+				dynamicDependentEntryPointsByDynamicEntry
+			);
+		}
 	}
 }
 
