@@ -729,7 +729,6 @@ export default class Chunk {
 		const chunkSourcemapChain: DecodedSourceMapOrMissing[] = [];
 
 		return renderChunk({
-			chunk: this,
 			code: prevCode,
 			options,
 			outputPluginDriver,
